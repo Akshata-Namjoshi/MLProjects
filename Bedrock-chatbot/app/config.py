@@ -1,0 +1,11 @@
+import os
+import dotenv
+
+dotenv.load_dotenv()
+
+AWS_REGION = os.getenv("AWS_REGION", "us-east-1")
+BEDROCK_INFERENCE_PROFILE_ARN = os.getenv("BEDROCK_INFERENCE_PROFILE_ARN")
+BEDROCK_PROMPT_ARN = os.getenv("BEDROCK_PROMPT_ARN")
+MAX_TOKENS = 512
+MAX_RETRIES = 4
+BASE_TEMPERATURE = 0.7

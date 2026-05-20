@@ -1,0 +1,25 @@
+services:
+  streamlit:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bedrock-chatbot
+    ports:
+      - "8501:8501"
+    environment:
+      - STREAMLIT_SERVER_HEADLESS=true
+      - STREAMLIT_SERVER_RUN_ON_SAVE=true
+      - STREAMLIT_LOGGER_LEVEL=info
+    volumes:
+      - ./Bedrock-chatbot:/app/Bedrock-chatbot
+      - ./src:/app/src
+      - ./artifacts:/app/artifacts
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    networks:
+      - streamlit-network
+
+networks:
+  streamlit-network:
+    driver: bridge
